@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="veterinaria.login_registrer.log_in"
-             Title="log_in"
+             x:Class="veterinaria.login_registrer.register"
+             Title="register"
              BackgroundColor="White">
+    
+    
     <VerticalStackLayout Padding="20" Spacing="15" Margin="0,30,0,0">
 
         <!-- Header -->
         <Label Text="Welcome" 
-               FontSize="32"
-               FontAttributes="Bold"
-               TextColor="Black" 
-               HorizontalOptions="Center"/>
+            FontSize="32"
+            FontAttributes="Bold"
+            TextColor="Black" 
+            HorizontalOptions="Center"/>
         <Label Text="Sign up to join" 
-               FontSize="16"
-               TextColor="Gray" 
-               HorizontalOptions="Center"
-               Margin="0,0,0,30"/>
+            FontSize="16"
+            TextColor="Gray" 
+            HorizontalOptions="Center"
+            Margin="0,0,0,30"/>
 
         <!-- Form Fields -->
         <Entry Placeholder="Name"  TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
@@ -24,32 +26,39 @@
         <Entry Placeholder="Home Adress" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
         <Entry Placeholder="Email" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
         <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontSize="16" Margin="0,0,0,30"/>
-        
+
 
         <!-- Terms and Conditions -->
         <HorizontalStackLayout Spacing="5">
             <CheckBox Color="Green" IsChecked="True"/>
             <Label Text="I agree to the"
-                   VerticalOptions="Center"
-                   FontSize="14" 
-                   TextColor="Gray"/>
+                VerticalOptions="Center"
+                FontSize="14" 
+                TextColor="Gray"/>
             <Label Text="Terms of Service"
-                   VerticalOptions="Center"
-                   FontSize="14"
-                   TextColor="Blue"/>
+                VerticalOptions="Center"
+                FontSize="14"
+                TextColor="Blue"/>
         </HorizontalStackLayout>
 
         <!-- Sign Up Button -->
         <Button Text="Sign Up"
-                BackgroundColor="Blue"
-                TextColor="White"
-                CornerRadius="5"
-                FontSize="16"/>
+             Clicked="Gotologin"
+             BackgroundColor="Blue"
+             TextColor="White"
+             CornerRadius="5"
+             FontSize="16"/>
 
         <!-- Sign In Link -->
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-            <Label Text="Have an account?" FontSize="14" TextColor="Gray"/>
-            <Label Text="Sign In" FontSize="14" TextColor="Blue"/>
+            <Button Text="Sign In" 
+            Clicked="Gotologin"
+            BackgroundColor="Transparent" 
+            TextColor="White" 
+            BorderColor="White"
+            BorderWidth="1"
+            CornerRadius="20"
+            WidthRequest="120" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -1,25 +1,21 @@
-﻿namespace veterinaria
+﻿
+namespace veterinaria
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : FlyoutPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
+            Flyout = new Maestro();
+            Detail = new NavigationPage(new Detalle());
+
+            App.FlyoutPage = this;
+            Application.Current.MainPage = new NavigationPage(new login_registrer.login_registro());
+
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
     }
 
 }

@@ -43,6 +43,7 @@
                 <!--GestureRecognizers="{Binding TapGestureCommand}" />-->
 
                 <Button Text="Sign In"
+                        Clicked="Gotologin"
                         FontSize="18"
                         BackgroundColor="#4B82F1"
                         TextColor="White"
@@ -54,11 +55,14 @@
                     <Label Text="Don't have an account?"
                            FontSize="14"
                            TextColor="Gray" />
-                    <Label Text="Sign Up"
-                           FontSize="14"
-                           TextColor="#4B82F1"
-                           FontAttributes="Bold"
-                           Margin="5,0,0,0"/>
+                    
+                    <Button Text="register"
+                    Clicked="Gotoregister" 
+                    FontSize="14"
+                    TextColor="#4B82F1"
+                    FontAttributes="Bold"
+                    Margin="5,0,0,0"/>
+
                     <!--GestureRecognizers="{Binding SignUpCommand}" />-->
                 </HorizontalStackLayout>
             </VerticalStackLayout>

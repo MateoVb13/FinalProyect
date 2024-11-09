@@ -6,4 +6,19 @@ public partial class login_registro : ContentPage
 	{
 		InitializeComponent();
 	}
+    private void goToPage(ContentPage page)
+    {
+         this.Navigation.PushAsync(page);
+    }
+
+    private void Gotologin(object sender, EventArgs e)
+    {
+        goToPage(new login_registrer.Login());
+    }
+
+
+    private void Gotoregister(object sender, EventArgs e)
+    {
+        goToPage(new login_registrer.register());
+    }
 }

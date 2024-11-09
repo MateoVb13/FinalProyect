@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="veterinaria.login_registrer.Login"
+             Title="Login"
+             BackgroundColor="White">
+
+    <Grid>
+        <Image Source="perro2fondo.jpg" 
+           Aspect="AspectFill" 
+           Opacity="0.7"/>
+        <VerticalStackLayout>
+
+            <Label Text="Welcome back"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Start" 
+                   Margin="20,40,0,0"/>
+
+            <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="Center">
+
+
+                <Label Text="Sign in to continue"
+                       FontSize="16"
+                       TextColor="Gray"
+                       HorizontalOptions="Start" 
+                       Margin="0,0,0,30"/>
+
+                <Entry Placeholder="Username"
+                       FontSize="16"
+                       TextColor="Black"
+                       Keyboard="Email" 
+                       Margin="0,0,0,0"/>
+
+                <Entry Placeholder="Password"
+                       IsPassword="True"
+                       FontSize="16"
+                       TextColor="Black" 
+                       Margin="0,0,0,10"/>
+
+
+                <!--GestureRecognizers="{Binding TapGestureCommand}" />-->
+
+                <Button Text="Sign In"
+                        FontSize="18"
+                        BackgroundColor="#4B82F1"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="10"
+                        Margin="0,10,0,0" />
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Don't have an account?"
+                           FontSize="14"
+                           TextColor="Gray" />
+                    <Label Text="Sign Up"
+                           FontSize="14"
+                           TextColor="#4B82F1"
+                           FontAttributes="Bold"
+                           Margin="5,0,0,0"/>
+                    <!--GestureRecognizers="{Binding SignUpCommand}" />-->
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+
+
+</ContentPage>

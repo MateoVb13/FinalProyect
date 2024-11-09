@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="veterinaria.login_registrer.login_registro"
+             Title="login_registro"
+             BackgroundColor="Black">
+    <Grid>
+        <!-- Imagen de fondo -->
+        <Image Source="perrofondo.jpg" 
+               Aspect="AspectFill" 
+               Opacity="0.6"/>
+
+        <!-- Contenido principal -->
+
+        <Grid RowDefinitions="*,4*,*">
+            <StackLayout Grid.Row="0">
+                <!-- Título y descripción -->
+                <Label Text="Veterinarie"
+                    FontSize="25"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Margin="0,30,0,20"/>        
+
+                <Label Text="Enjoy treatment directly"
+                    FontSize="30"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                       Margin="0,0,0,15"/>
+
+                <Label Text="Sit back and relax let your beloved pet enjoy the real care"
+                    FontSize="14"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                       Padding="40,0"/>
+
+            </StackLayout>
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20" Spacing="15" Grid.Row="2">
+
+                <!-- Botones -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                    <Button Text="Sign Up" 
+                        BackgroundColor="#3A5FCD" 
+                        TextColor="White" 
+                        CornerRadius="20"
+                        WidthRequest="120" />
+                    <Button Text="Sign In" 
+                        BackgroundColor="Transparent" 
+                        TextColor="White" 
+                        BorderColor="White"
+                        BorderWidth="1"
+                        CornerRadius="20"
+                        WidthRequest="120" />
+                </StackLayout>
+
+                <!-- Términos y condiciones -->
+                <Label Text="By joining you agree to our Terms of Service and Privacy Policy"
+                   FontSize="10"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+        </Grid>
+        
+        
+    </Grid>
+</ContentPage>

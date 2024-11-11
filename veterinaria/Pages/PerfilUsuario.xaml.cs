@@ -6,5 +6,9 @@ namespace veterinaria.Pages
         {
             InitializeComponent();
         }
+        private async void GotoRegistrarMascota(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegistrarMascota());
+        }
     }
 }

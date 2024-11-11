@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="veterinaria.Pages.RegistrarMascota"
+             Title="Registrar Nueva Mascota">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Encabezado -->
+            <Label Text="Registrar Nueva Mascota"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#004d40" />
+
+            <!-- Nombre de la Mascota -->
+            <Frame CornerRadius="10" BackgroundColor="#e0f7fa" Padding="10">
+                <StackLayout>
+                    <Label Text="Nombre de la Mascota"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="#00796b" />
+                    <Entry Placeholder="Ingrese el nombre de la mascota"
+                           FontSize="Small" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Raza de la Mascota -->
+            <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10">
+                <StackLayout>
+                    <Label Text="Raza de la Mascota"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="#bf360c" />
+                    <Entry Placeholder="Ingrese la raza de la mascota"
+                           FontSize="Small" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Tipo de Mascota -->
+            <Frame CornerRadius="10" BackgroundColor="#c8e6c9" Padding="10">
+                <StackLayout>
+                    <Label Text="Tipo de Mascota"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="#1b5e20" />
+                    <Picker Title="Seleccione el tipo de mascota"
+                            FontSize="Small">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Perro</x:String>
+                                <x:String>Gato</x:String>
+                                <x:String>Hamster</x:String>
+                                <x:String>Otro</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+            </Frame>
+
+            <!-- Fecha de Nacimiento -->
+            <Frame CornerRadius="10" BackgroundColor="#bbdefb" Padding="10">
+                <StackLayout>
+                    <Label Text="Fecha de Nacimiento"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="#0d47a1" />
+                    <DatePicker />
+                </StackLayout>
+            </Frame>
+
+            <!-- Botón de Confirmación -->
+            <Button Text="Registrar Mascota"
+                    FontSize="Medium"
+                    TextColor="White"
+                    BackgroundColor="#00796b"
+                    CornerRadius="10"
+                    WidthRequest="200"
+                    HorizontalOptions="Center" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

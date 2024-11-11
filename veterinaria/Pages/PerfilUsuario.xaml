@@ -20,6 +20,14 @@
                 </StackLayout>
             </Frame>
 
+            <!-- Botón Agregar Mascota -->
+            <Button Text="Agregar Mascota"
+                    Clicked="GotoRegistrarMascota"
+                    FontSize="Medium"
+                    TextColor="#004d40"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"/>
+
             <!-- Título de la sección de mascotas -->
             <Label Text="Mascotas:"
                    FontSize="Large"
@@ -27,7 +35,7 @@
                    HorizontalOptions="Start"
                    TextColor="#004d40" />
 
-            <!-- Botón Mascota 1 -->
+            <!-- Ejemplo de Mascotas Registradas -->
             <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10" Margin="0,5">
                 <Button Text="Nombre: Firulais | Raza: Labrador | Edad: 3 años"
                         FontSize="Small"
@@ -38,28 +46,7 @@
                         CornerRadius="10" />
             </Frame>
 
-            <!-- Botón Mascota 2 -->
-            <Frame CornerRadius="10" BackgroundColor="#c8e6c9" Padding="10" Margin="0,5">
-                <Button Text="Nombre: Pelusa | Raza: Persa | Edad: 2 años"
-                        FontSize="Small"
-                        TextColor="#1b5e20"
-                        BackgroundColor="#c8e6c9"
-                        BorderColor="#a5d6a7"
-                        BorderWidth="1"
-                        CornerRadius="10" />
-            </Frame>
-
-            <!-- Botón Mascota 3 -->
-            <Frame CornerRadius="10" BackgroundColor="#bbdefb" Padding="10" Margin="0,5">
-                <Button Text="Nombre: Rex | Raza: Pastor Alemán | Edad: 5 años"
-                        FontSize="Small"
-                        TextColor="#0d47a1"
-                        BackgroundColor="#bbdefb"
-                        BorderColor="#90caf9"
-                        BorderWidth="1"
-                        CornerRadius="10" />
-            </Frame>
-
+            <!-- Otros botones de mascotas aquí -->
 
         </StackLayout>
     </ScrollView>

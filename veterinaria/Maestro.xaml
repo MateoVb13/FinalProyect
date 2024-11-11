@@ -6,15 +6,27 @@
     <VerticalStackLayout>
 
         <Button Text="login"
-                Clicked="Gotologin" WidthRequest="250" Margin="0,20"/>
+                Clicked="Gotologin" 
+                WidthRequest="250" 
+                Margin="0,20"/>
 
 
         <Button Text="register" 
-                Clicked="Gotoregister" WidthRequest="250" Margin="0,20"/>
+                Clicked="Gotoregister" 
+                WidthRequest="250" 
+                Margin="0,20"/>
         
         
         <Button Text="Ir a Perfil de Usuario"
-                Clicked="GotoPerfilUsuario" />
+                Clicked="GotoPerfilUsuario"
+                WidthRequest="250"
+                Margin="0,20"/>
+
+        <Button Text="Agendar Cita"
+        Clicked="GotoAgendarCita"
+        WidthRequest="250"
+        Margin="0,20"/>
+
 
     </VerticalStackLayout>
 </ContentPage>

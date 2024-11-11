@@ -3,10 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="veterinaria.Pages.PerfilUsuario"
              Title="Perfil de Usuario">
-    <StackLayout Padding="20">
-        <Label Text="Perfil de Usuario"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
-        <!-- Aquí puedes agregar el contenido del perfil -->
-    </StackLayout>
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Información del Usuario -->
+            <Frame CornerRadius="10" BackgroundColor="#e0f7fa" Padding="15">
+                <StackLayout>
+                    <Label Text="Nombre del Usuario: Juan Pérez"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="#00796b" />
+
+                    <Label Text="Correo Electrónico: juan.perez@example.com"
+                           FontSize="Medium"
+                           TextColor="#00796b" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Título de la sección de mascotas -->
+            <Label Text="Mascotas:"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   TextColor="#004d40" />
+
+            <!-- Botón Mascota 1 -->
+            <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10" Margin="0,5">
+                <Button Text="Nombre: Firulais | Raza: Labrador | Edad: 3 años"
+                        FontSize="Small"
+                        TextColor="#bf360c"
+                        BackgroundColor="#ffe0b2"
+                        BorderColor="#ffab91"
+                        BorderWidth="1"
+                        CornerRadius="10" />
+            </Frame>
+
+            <!-- Botón Mascota 2 -->
+            <Frame CornerRadius="10" BackgroundColor="#c8e6c9" Padding="10" Margin="0,5">
+                <Button Text="Nombre: Pelusa | Raza: Persa | Edad: 2 años"
+                        FontSize="Small"
+                        TextColor="#1b5e20"
+                        BackgroundColor="#c8e6c9"
+                        BorderColor="#a5d6a7"
+                        BorderWidth="1"
+                        CornerRadius="10" />
+            </Frame>
+
+            <!-- Botón Mascota 3 -->
+            <Frame CornerRadius="10" BackgroundColor="#bbdefb" Padding="10" Margin="0,5">
+                <Button Text="Nombre: Rex | Raza: Pastor Alemán | Edad: 5 años"
+                        FontSize="Small"
+                        TextColor="#0d47a1"
+                        BackgroundColor="#bbdefb"
+                        BorderColor="#90caf9"
+                        BorderWidth="1"
+                        CornerRadius="10" />
+            </Frame>
+
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -31,4 +31,9 @@ public partial class Maestro : ContentPage
     {
         goToPage(new Pages.PerfilUsuario());
     }
+    private void GotoAgendarCita(object sender, EventArgs e)
+    {
+        goToPage(new Pages.AgendarCita());
+    }
+
 }

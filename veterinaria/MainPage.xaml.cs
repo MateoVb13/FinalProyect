@@ -11,7 +11,7 @@ namespace veterinaria
             Detail = new NavigationPage(new Detalle());
 
             App.FlyoutPage = this;
-            Application.Current.MainPage = new NavigationPage(new login_registrer.login_registro());
+            Application.Current.MainPage = new NavigationPage(new Pages.LoginRegister());
 
         }
 

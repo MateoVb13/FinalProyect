@@ -8,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new login_registrer.login_registro()); 
+            MainPage = new NavigationPage(new Pages.LoginRegister()); 
         }
     }
 }

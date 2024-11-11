@@ -14,16 +14,21 @@ public partial class Maestro : ContentPage
 
     private void Gotologin(object sender, EventArgs e)
     {
-        goToPage(new login_registrer.Login());
+        goToPage(new Pages.Login());
     }
 
     private void Gotologin_registro(object sender, EventArgs e)
     {
-        goToPage(new login_registrer.login_registro());
+        goToPage(new Pages.LoginRegister());
     }
 
     private void Gotoregister(object sender, EventArgs e)
     {
-        goToPage(new login_registrer.register());
+        goToPage(new Pages.Register());
+    }
+
+    private void GotoPerfilUsuario(object sender, EventArgs e)
+    {
+        goToPage(new Pages.PerfilUsuario());
     }
 }

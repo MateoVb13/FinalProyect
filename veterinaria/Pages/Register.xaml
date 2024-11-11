@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="veterinaria.login_registrer.register"
-             Title="register"
+             x:Class="veterinaria.Pages.Register"
+             Title="Register"
              BackgroundColor="White">
-    
-    
+
+
     <VerticalStackLayout Padding="20" Spacing="15" Margin="0,30,0,0">
 
         <!-- Header -->

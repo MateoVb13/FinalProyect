@@ -1,4 +1,4 @@
-namespace veterinaria.login_registrer;
+namespace veterinaria.Pages;
 
 public partial class Login : ContentPage
 {
@@ -6,7 +6,7 @@ public partial class Login : ContentPage
 	{
 		InitializeComponent();
 	}
-    private void goToPage(ContentPage page)
+    private void GoToPage(ContentPage page)
     {
         this.Navigation.PushAsync(page);
 
@@ -14,11 +14,13 @@ public partial class Login : ContentPage
 
     private void Gotoregister(object sender, EventArgs e)
     {
-        goToPage(new login_registrer.register());
+        GoToPage(new Pages.Register());
     }
 
     private void Gotologin(object sender, EventArgs e)
     {
         Application.Current.MainPage = new MainPage(); // MainPage es tu página con FlyoutPage
     }
+
+
 }

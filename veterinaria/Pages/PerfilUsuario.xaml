@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="veterinaria.Pages.PerfilUsuario"
+             Title="Perfil de Usuario">
+    <StackLayout Padding="20">
+        <Label Text="Perfil de Usuario"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        <!-- Aquí puedes agregar el contenido del perfil -->
+    </StackLayout>
+</ContentPage>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="veterinaria.login_registrer.login_registro"
-             Title="login_registro"
+             x:Class="veterinaria.Pages.LoginRegister"
              BackgroundColor="Black">
     <ScrollView>
         <Grid>
@@ -48,7 +47,7 @@
                             TextColor="White" 
                             CornerRadius="20"
                             WidthRequest="120" />
-                        
+
                         <Button Text="Sign In" 
                             Clicked="Gotologin"
                             BackgroundColor="Transparent" 

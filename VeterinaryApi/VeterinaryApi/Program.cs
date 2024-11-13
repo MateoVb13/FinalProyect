@@ -21,12 +21,12 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configurar el pipeline HTTP
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Veterinary API v1"));
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

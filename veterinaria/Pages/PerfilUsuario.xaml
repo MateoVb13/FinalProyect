@@ -9,12 +9,16 @@
             <!-- Información del Usuario -->
             <Frame CornerRadius="10" BackgroundColor="#e0f7fa" Padding="15">
                 <StackLayout>
-                    <Label Text="Nombre del Usuario: Juan Pérez"
+                    <!-- Etiqueta para mostrar el nombre del usuario de forma dinámica -->
+                    <Label x:Name="nombreUsuarioLabel"
+                           Text="Nombre del Usuario"
                            FontSize="Medium"
                            FontAttributes="Bold"
                            TextColor="#00796b" />
 
-                    <Label Text="Correo Electrónico: juan.perez@example.com"
+                    <!-- Etiqueta para mostrar el correo electrónico de forma dinámica -->
+                    <Label x:Name="correoUsuarioLabel"
+                           Text="Correo Electrónico"
                            FontSize="Medium"
                            TextColor="#00796b" />
                 </StackLayout>
@@ -35,19 +39,10 @@
                    HorizontalOptions="Start"
                    TextColor="#004d40" />
 
-            <!-- Ejemplo de Mascotas Registradas -->
-            <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10" Margin="0,5">
-                <Button Text="Nombre: Firulais | Raza: Labrador | Edad: 3 años"
-                        FontSize="Small"
-                        TextColor="#bf360c"
-                        BackgroundColor="#ffe0b2"
-                        BorderColor="#ffab91"
-                        BorderWidth="1"
-                        CornerRadius="10" />
-            </Frame>
-
-            <!-- Otros botones de mascotas aquí -->
-
+            <!-- Contenedor dinámico para la lista de mascotas -->
+            <StackLayout x:Name="mascotasStackLayout" Spacing="10">
+                <!-- Aquí se agregarán los botones de mascotas dinámicamente desde el código subyacente -->
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

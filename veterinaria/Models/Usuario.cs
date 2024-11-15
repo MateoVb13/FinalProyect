@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace veterinaria.Models
@@ -8,21 +9,22 @@ namespace veterinaria.Models
         public int Idusuarios { get; set; }
 
         [JsonPropertyName("nombre_usuario")]
-        public required string NombreUsuario { get; set; }
+        public required string nombre_usuario { get; set; }
 
-        [JsonPropertyName("correo_usuario")]
-        public required string CorreoUsuario { get; set; }
+        [JsonPropertyName("correo_ususario")]
+        public required string correo_ususario { get; set; }
 
         [JsonPropertyName("telefono_usuario")]
-        public required string TelefonoUsuario { get; set; }
+        public required string telefono_usuario { get; set; }
 
         [JsonPropertyName("direccion_usuario")]
-        public required string DireccionUsuario { get; set; }
+        public required string direccion_usuario { get; set; }
 
         [JsonPropertyName("contraseña_usuario")]
-        public required string ContraseñaUsuario { get; set; }
+        public required string contraseña_usuario { get; set; }
 
         [JsonPropertyName("roles_idroles")]
-        public int RolesIdroles { get; set; }
+        public int Roles_idroles { get; set; }
     }
 }
+

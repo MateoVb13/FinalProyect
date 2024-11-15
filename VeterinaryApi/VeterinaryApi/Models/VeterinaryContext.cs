@@ -11,6 +11,14 @@ namespace VeterinaryApi.Models
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("Server=localhost;Database=veterinaria_atencion_mascotas_DB;User Id=root;Password=root;", ServerVersion.AutoDetect("Server=localhost;Database=veterinaria_atencion_mascotas_DB;User Id=root;Password=root;"));
+            }
+        }
+
         public DbSet<Rol> roles { get; set; }
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<Mascota> mascotas { get; set; }
@@ -159,4 +167,6 @@ namespace VeterinaryApi.Models
         public int tipos_pago_idtipos_pago { get; set; }
         public int facturas_idfacturas { get; set; }
     }
+
+
 }

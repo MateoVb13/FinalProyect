@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using veterinaria.Models;
 
 public class ApiService
 {
@@ -80,6 +81,40 @@ public class ApiService
         else
         {
             return 0;
+        }
+    }
+
+    // Método para registrar un usuario
+    // Método para registrar un usuario
+    public async Task<bool> RegisterAsync(Usuario usuario)
+    {
+        try
+        {
+            var endpoint = "api/usuarios/register";
+            var response = await PostAsync<Usuario, Usuario>(endpoint, usuario);
+            return response != null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al registrar el usuario: {ex.Message}");
+            return false;
+        }
+    }
+
+
+
+    // Método para iniciar sesión
+    public async Task<Usuario> LoginAsync(UsuarioLoginDTO loginDTO)
+    {
+        try
+        {
+            var endpoint = "api/usuarios/login";
+            return await PostAsync<UsuarioLoginDTO, Usuario>(endpoint, loginDTO);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al iniciar sesión: {ex.Message}");
+            return null;
         }
     }
 }

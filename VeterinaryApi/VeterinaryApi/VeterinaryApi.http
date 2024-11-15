@@ -1,6 +1,6 @@
 @VeterinaryApi_HostAddress = http://localhost:5166
 
-GET {{VeterinaryApi_HostAddress}}/weatherforecast/
+GET {{VeterinaryApi_HostAddress}}/UsuariosController/
 Accept: application/json
 
 ###

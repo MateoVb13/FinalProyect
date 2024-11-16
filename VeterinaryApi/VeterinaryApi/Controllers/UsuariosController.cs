@@ -78,20 +78,29 @@ namespace VeterinaryApi.Controllers
 
         // Endpoint para registrar un nuevo usuario
         [HttpPost("register")]
-        public ActionResult<Usuario> Register([FromBody] Usuario usuario)
+        public ActionResult Register([FromBody] Usuario usuario)
         {
-            // Verificar si ya existe un usuario con el mismo correo
-            if (_context.usuarios.Any(u => u.correo_ususario == usuario.correo_ususario))
+            try
             {
-                return BadRequest("Ya existe un usuario con este correo.");
+                if (_context.usuarios.Any(u => u.correo_ususario == usuario.correo_ususario))
+                {
+                    Console.WriteLine("Ya existe un usuario con el correo: " + usuario.correo_ususario);
+                    return BadRequest("Ya existe un usuario con este correo.");
+                }
+
+                _context.usuarios.Add(usuario);
+                _context.SaveChanges();
+                Console.WriteLine("Usuario registrado exitosamente: " + usuario.nombre_usuario);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al registrar usuario: {ex.Message}");
+                return StatusCode(500, $"Error al registrar usuario: {ex.Message}");
             }
 
-            // Agregar el nuevo usuario
-            _context.usuarios.Add(usuario);
-            _context.SaveChanges();
-
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuario.idusuarios }, usuario);
+            return Ok("Usuario registrado exitosamente");
         }
+
 
 
 

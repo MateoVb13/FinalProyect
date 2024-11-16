@@ -10,7 +10,7 @@ public partial class Login : ContentPage
     public Login()
 	{
 		InitializeComponent();
-        _apiService = new ApiService("https://localhost:7122"); // Reemplaza con la URL de tu API
+        _apiService = new ApiService("https://localhost:7122"); 
 
     }
     private void GoToPage(ContentPage page)

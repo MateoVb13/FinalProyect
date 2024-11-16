@@ -6,7 +6,7 @@ namespace veterinaria.Models
     public class Usuario
     {
         [JsonPropertyName("idusuarios")]
-        public int Idusuarios { get; set; }
+        public int idusuarios { get; set; }
 
         [JsonPropertyName("nombre_usuario")]
         public required string nombre_usuario { get; set; }
@@ -22,9 +22,8 @@ namespace veterinaria.Models
 
         [JsonPropertyName("contraseña_usuario")]
         public required string contraseña_usuario { get; set; }
-
-        [JsonPropertyName("roles_idroles")]
+        
+        [JsonPropertyName("Roles_idroles")]
         public int Roles_idroles { get; set; }
     }
 }
-

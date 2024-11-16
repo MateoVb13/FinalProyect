@@ -40,16 +40,43 @@ public class ApiService
 
         var response = await _httpClient.PostAsync(url, content);
 
-        if (response.IsSuccessStatusCode)
+        // Captura el código de estado y el contenido de la respuesta para depuración
+        var responseContent = await response.Content.ReadAsStringAsync();
+        Console.WriteLine($"Código de estado: {response.StatusCode}");
+        Console.WriteLine($"Contenido de la respuesta: {responseContent}");
+
+        // Maneja el caso cuando el código de estado es exitoso (200, 201)
+        if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Created)
         {
-            var responseData = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<TResponse>(responseData);
+            try
+            {
+                // Intenta deserializar la respuesta si no es string
+                if (typeof(TResponse) == typeof(string))
+                {
+                    return (TResponse)(object)responseContent;
+                }
+                return JsonConvert.DeserializeObject<TResponse>(responseContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al deserializar la respuesta: {ex.Message}");
+                // Si falla la deserialización, devuelve la respuesta como string si es necesario
+                if (typeof(TResponse) == typeof(string))
+                {
+                    return (TResponse)(object)responseContent;
+                }
+                throw;  // Vuelve a lanzar la excepción si no es posible manejarla
+            }
         }
         else
         {
-            throw new Exception($"Error al enviar datos: {response.ReasonPhrase}");
+            throw new Exception($"Error al enviar datos: {response.ReasonPhrase}, Código de estado: {response.StatusCode}, Contenido: {responseContent}");
         }
     }
+
+
+
+
     public async Task<TResponse> PutAsync<TRequest, TResponse>(string endpoint, TRequest data)
     {
         var url = $"{_baseUrl}/{endpoint}";
@@ -85,21 +112,45 @@ public class ApiService
     }
 
     // Método para registrar un usuario
-    // Método para registrar un usuario
     public async Task<bool> RegisterAsync(Usuario usuario)
     {
         try
         {
             var endpoint = "api/usuarios/register";
-            var response = await PostAsync<Usuario, Usuario>(endpoint, usuario);
-            return response != null;
+            var url = $"{_baseUrl}/{endpoint}";
+            var jsonData = JsonConvert.SerializeObject(usuario);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync(url, content);
+
+            // Verificar si la respuesta es exitosa (código de estado 200 o 201)
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Registro exitoso.");
+                return true;
+            }
+            else
+            {
+                // Capturar y mostrar el error recibido de la API
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error al registrar el usuario: {response.ReasonPhrase}, Contenido del error: {errorContent}");
+                return false;
+            }
         }
         catch (Exception ex)
         {
+            // Manejar cualquier excepción que ocurra durante la petición HTTP
             Console.WriteLine($"Error al registrar el usuario: {ex.Message}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"Detalles del error: {ex.InnerException.Message}");
+            }
             return false;
         }
     }
+
+
+
 
 
 

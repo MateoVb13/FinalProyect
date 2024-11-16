@@ -26,13 +26,15 @@
                        HorizontalOptions="Start" 
                        Margin="0,0,0,30"/>
 
-                <Entry Placeholder="Username"
+                <Entry x:Name="emailEntry" 
+                       Placeholder="Correo electrónico"
                        FontSize="16"
                        TextColor="Black"
                        Keyboard="Email" 
                        Margin="0,0,0,0"/>
 
-                <Entry Placeholder="Password"
+                <Entry x:Name="passwordEntry" 
+                       Placeholder="Contraseña"
                        IsPassword="True"
                        FontSize="16"
                        TextColor="Black" 
@@ -42,7 +44,7 @@
                 <!--GestureRecognizers="{Binding TapGestureCommand}" />-->
 
                 <Button Text="Sign In"
-                        Clicked="Gotologin"
+                        Clicked="OnLoginClicked"
                         FontSize="18"
                         BackgroundColor="#4B82F1"
                         TextColor="White"

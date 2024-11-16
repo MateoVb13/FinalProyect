@@ -1,11 +1,18 @@
+using veterinaria.Models;
+
+
 namespace veterinaria.Pages;
 
 public partial class Login : ContentPage
 {
-	public Login()
+    private readonly ApiService _apiService;
+
+    public Login()
 	{
 		InitializeComponent();
-	}
+        _apiService = new ApiService("https://localhost:7122"); // Reemplaza con la URL de tu API
+
+    }
     private void GoToPage(ContentPage page)
     {
         this.Navigation.PushAsync(page);
@@ -17,10 +24,29 @@ public partial class Login : ContentPage
         GoToPage(new Pages.Register());
     }
 
-    private void Gotologin(object sender, EventArgs e)
+
+    private async void OnLoginClicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new MainPage(); // MainPage es tu página con FlyoutPage
+        var loginDTO = new UsuarioLoginDTO
+        {
+            Email = emailEntry.Text,
+            Password = passwordEntry.Text
+        };
+
+        var usuario = await _apiService.LoginAsync(loginDTO);
+        if (usuario != null)
+        {
+            await DisplayAlert("Éxito", $"Bienvenido {usuario.nombre_usuario}", "OK");
+            // Navegar a la página principal de la aplicación
+            await Navigation.PushAsync(new NavigationPage(new Pages.LoginRegister()));
+        }
+        else
+        {
+            await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+        }
     }
+
+
 
 
 }

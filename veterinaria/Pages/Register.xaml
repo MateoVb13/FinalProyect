@@ -21,11 +21,11 @@
             Margin="0,0,0,30"/>
 
         <!-- Form Fields -->
-        <Entry Placeholder="Name"  TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
-        <Entry Placeholder="Phone" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
-        <Entry Placeholder="Home Adress" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
-        <Entry Placeholder="Email" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
-        <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontSize="16" Margin="0,0,0,30"/>
+        <Entry x:Name = "nombreEntry" Placeholder="Name"  TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
+        <Entry x:Name = "telefonoEntry" Placeholder="Phone" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
+        <Entry x:Name = "direccionEntry" Placeholder="Home Adress" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
+        <Entry x:Name = "emailEntry" Placeholder="Email" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
+        <Entry x:Name = "passwordEntry" Placeholder="Password" IsPassword="True" TextColor="Black" FontSize="16" Margin="0,0,0,30"/>
 
 
         <!-- Terms and Conditions -->
@@ -43,7 +43,7 @@
 
         <!-- Sign Up Button -->
         <Button Text="Sign Up"
-             Clicked="Gotologin"
+             Clicked="OnRegisterClicked"
              BackgroundColor="Blue"
              TextColor="White"
              CornerRadius="5"

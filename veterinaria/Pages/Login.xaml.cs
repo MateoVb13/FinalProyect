@@ -10,7 +10,7 @@ public partial class Login : ContentPage
     public Login()
 	{
 		InitializeComponent();
-        _apiService = new ApiService("https://localhost:7122"); 
+        _apiService = new ApiService("https://7c42-2800-e2-c180-12c-608f-5211-ab50-42e7.ngrok-free.app"); 
 
     }
     private void GoToPage(ContentPage page)
@@ -38,7 +38,7 @@ public partial class Login : ContentPage
         {
             await DisplayAlert("Éxito", $"Bienvenido {usuario.nombre_usuario}", "OK");
             // Navegar a la página principal de la aplicación
-            await Navigation.PushAsync(new NavigationPage(new Pages.LoginRegister()));
+            Application.Current.MainPage = new MainPage();
         }
         else
         {

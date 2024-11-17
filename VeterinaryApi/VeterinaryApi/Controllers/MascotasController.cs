@@ -34,39 +34,52 @@ namespace VeterinaryApi.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult<Mascota> RegistrarMascota([FromBody] RegistrarMascotaDTO mascotaDTO)
+        public IActionResult RegisterMascota([FromBody] RegistrarMascotaDTO mascota)
         {
             try
             {
-                // Obtener el ID del usuario autenticado desde los claims
-                var userIdClaim = User.FindFirst("id");
-                if (userIdClaim == null)
+                // Extraer el userId desde el token JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
                 {
                     return Unauthorized("Usuario no autenticado.");
                 }
-                var userId = int.Parse(userIdClaim.Value);
 
-                // Crear la nueva mascota
+                // Asignar el userId extraído al DTO
+                mascota.usuarios_dueno_idusuarios = userId;
+
+                // Validar los datos de la mascota
+                if (string.IsNullOrWhiteSpace(mascota.nombre_mascota) ||
+                    string.IsNullOrWhiteSpace(mascota.tipo_animal) ||
+                    string.IsNullOrWhiteSpace(mascota.raza_animal) ||
+                    mascota.edad_mascota <= 0)
+                {
+                    return BadRequest("Datos inválidos para el registro de la mascota.");
+                }
+
+                // Guardar la mascota en la base de datos
                 var nuevaMascota = new Mascota
                 {
-                    nombre_mascota = mascotaDTO.nombre_mascota,
-                    edad_mascota = mascotaDTO.edad_mascota,
-                    fecha_nacimiento = mascotaDTO.fecha_nacimiento,
-                    tipo_animal = mascotaDTO.tipo_animal,
-                    raza_animal = mascotaDTO.raza_animal,
+                    nombre_mascota = mascota.nombre_mascota,
+                    edad_mascota = mascota.edad_mascota,
+                    fecha_nacimiento = mascota.fecha_nacimiento,
+                    tipo_animal = mascota.tipo_animal,
+                    raza_animal = mascota.raza_animal,
                     usuarios_dueno_idusuarios = userId
                 };
 
                 _context.mascotas.Add(nuevaMascota);
                 _context.SaveChanges();
 
-                return CreatedAtAction(nameof(GetMascota), new { id = nuevaMascota.idmascotas }, nuevaMascota);
+                return Ok("Mascota registrada exitosamente.");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {ex.Message}");
+                Console.WriteLine($"Error al registrar mascota: {ex.Message}");
+                return StatusCode(500, "Ocurrió un error al registrar la mascota.");
             }
         }
+
 
 
         [HttpPut("{id}")]

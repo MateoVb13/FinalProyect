@@ -144,13 +144,23 @@ namespace VeterinaryApi.Controllers
             // Generar el token
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            // Devolver el token al cliente
-            return Ok(new
+            // Agregar el token al objeto Usuario antes de devolverlo
+            var usuarioConToken = new
             {
+                usuario.idusuarios,
+                usuario.nombre_usuario,
+                usuario.correo_ususario,
+                usuario.telefono_usuario,
+                usuario.direccion_usuario,
+                usuario.Roles_idroles,
                 Token = tokenString,
                 Expiration = token.ValidTo
-            });
+            };
+
+            // Devolver el usuario con el token
+            return Ok(usuarioConToken);
         }
+
 
 
 

@@ -2,6 +2,14 @@
 using VeterinaryApi.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+
+
+
 
 
 
@@ -11,7 +19,7 @@ namespace VeterinaryApi.Controllers
     [Route("api/[controller]")]
     public class UsuariosController : ControllerBase
     {
-        
+
         private readonly VeterinaryContext _context;
 
 
@@ -103,10 +111,8 @@ namespace VeterinaryApi.Controllers
 
 
 
-
-        // Endpoint para iniciar sesión
         [HttpPost("login")]
-        public ActionResult<Usuario> Login([FromBody] UsuarioLoginDTO loginDTO)
+        public IActionResult Login([FromBody] UsuarioLoginDTO loginDTO)
         {
             // Buscar el usuario con el correo y la contraseña proporcionados
             var usuario = _context.usuarios.FirstOrDefault(u => u.correo_ususario == loginDTO.Email && u.contraseña_usuario == loginDTO.Password);
@@ -115,8 +121,37 @@ namespace VeterinaryApi.Controllers
                 return Unauthorized("Credenciales incorrectas.");
             }
 
-            return Ok(usuario);
+            // Crear las claims que irán dentro del token
+            var claims = new[]
+            {
+        new Claim("id", usuario.idusuarios.ToString()), // ID del usuario
+        new Claim(ClaimTypes.Name, usuario.nombre_usuario), // Nombre del usuario
+        new Claim(ClaimTypes.Email, usuario.correo_ususario) // Correo electrónico
+    };
+
+            // Configuración del token
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ClaveSuperSecreta12345678901234567890")); // Reemplaza con tu clave del appsettings.json
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: "VeterinaryApi", // Emisor del token
+                audience: "VeterinaryApiUsers", // Audiencia
+                claims: claims,
+                expires: DateTime.Now.AddHours(1), // Token válido por 1 hora
+                signingCredentials: creds
+            );
+
+            // Generar el token
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            // Devolver el token al cliente
+            return Ok(new
+            {
+                Token = tokenString,
+                Expiration = token.ValidTo
+            });
         }
+
 
 
     }

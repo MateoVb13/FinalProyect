@@ -152,13 +152,29 @@ namespace veterinaria.Services
             }
         }
 
-        // Método para iniciar sesión
         public async Task<Usuario> LoginAsync(UsuarioLoginDTO loginDTO)
         {
             try
             {
                 var endpoint = "api/usuarios/login";
-                return await PostAsync<UsuarioLoginDTO, Usuario>(endpoint, loginDTO);
+                var url = $"{_baseUrl}/{endpoint}";
+                var jsonData = JsonConvert.SerializeObject(loginDTO);
+
+                Console.WriteLine($"URL: {url}");
+                Console.WriteLine($"JSON Enviado: {jsonData}");
+
+                var response = await PostAsync<UsuarioLoginDTO, Usuario>(endpoint, loginDTO);
+
+                if (response != null)
+                {
+                    Console.WriteLine($"Usuario obtenido: {JsonConvert.SerializeObject(response)}");
+                }
+                else
+                {
+                    Console.WriteLine("La respuesta fue nula.");
+                }
+
+                return response;
             }
             catch (Exception ex)
             {
@@ -166,6 +182,9 @@ namespace veterinaria.Services
                 return null;
             }
         }
+
+
+
         public async Task<bool> RegistrarMascotaAsync(RegistrarMascotaDTO mascota)
         {
             var endpoint = "api/Mascotas/register";
@@ -173,13 +192,22 @@ namespace veterinaria.Services
 
             try
             {
+                // Obtener el token desde SecureStorage
+                var token = await SecureStorage.GetAsync("jwt_token");
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    Console.WriteLine("Token no encontrado. El usuario debe iniciar sesión nuevamente.");
+                    return false;
+                }
+
                 var jsonData = JsonConvert.SerializeObject(mascota);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                // Usar _httpClient definido en la clase
+                // Agregar el encabezado de autorización
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
                 var response = await _httpClient.PostAsync(url, content);
 
-                // Logs para depuración
                 Console.WriteLine($"URL: {url}");
                 Console.WriteLine($"JSON Enviado: {jsonData}");
                 Console.WriteLine($"Código de estado: {response.StatusCode}");
@@ -202,6 +230,8 @@ namespace veterinaria.Services
                 return false;
             }
         }
+
+
 
 
     }

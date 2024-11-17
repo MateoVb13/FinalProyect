@@ -25,5 +25,7 @@ namespace veterinaria.Models
         
         [JsonPropertyName("Roles_idroles")]
         public int Roles_idroles { get; set; }
+
+        public string Token { get; set; }
     }
 }

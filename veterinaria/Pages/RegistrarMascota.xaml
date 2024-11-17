@@ -10,7 +10,6 @@
         <DatePicker x:Name="FechaNacimientoPicker" />
         <Entry Placeholder="Tipo de animal (Perro, Gato, etc.)" x:Name="TipoAnimalEntry" />
         <Entry Placeholder="Raza del animal" x:Name="RazaAnimalEntry" />
-        <Entry Placeholder="ID del usuario dueño" x:Name="UsuarioIdEntry" Keyboard="Numeric" />
         <Button Text="Registrar Mascota" Clicked="OnRegistrarMascotaClicked" />
     </StackLayout>
 </ContentPage>

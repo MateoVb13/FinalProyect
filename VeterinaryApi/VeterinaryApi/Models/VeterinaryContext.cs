@@ -62,7 +62,6 @@ namespace VeterinaryApi.Models
         public required string nombre_mascota { get; set; }
         public int edad_mascota { get; set; }
         public DateTime fecha_nacimiento { get; set; }
-        public int clientes_idclientes { get; set; }
         public required string tipo_animal { get; set; }
         public required string raza_animal { get; set; }
         public int usuarios_dueno_idusuarios { get; set; }

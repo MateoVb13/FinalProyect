@@ -4,14 +4,13 @@
              x:Class="veterinaria.Pages.RegistrarMascota"
              Title="Registrar Mascota">
 
-    <VerticalStackLayout Padding="20">
-        <Entry x:Name="NombreEntry" Placeholder="Nombre de la Mascota" />
-        <Entry x:Name="EdadEntry" Placeholder="Edad de la Mascota" Keyboard="Numeric" />
-        <DatePicker x:Name="FechaNacimientoPicker" Date="{Binding FechaNacimiento}" />
-        <Entry x:Name="TipoAnimalEntry" Placeholder="Tipo de Animal (e.g., Perro, Gato)" />
-        <Entry x:Name="RazaAnimalEntry" Placeholder="Raza de la Mascota" />
-
-        <!-- Botón para registrar la mascota -->
+    <StackLayout Padding="10">
+        <Entry Placeholder="Nombre de la mascota" x:Name="NombreMascotaEntry" />
+        <Entry Placeholder="Edad de la mascota" x:Name="EdadMascotaEntry" Keyboard="Numeric" />
+        <DatePicker x:Name="FechaNacimientoPicker" />
+        <Entry Placeholder="Tipo de animal (Perro, Gato, etc.)" x:Name="TipoAnimalEntry" />
+        <Entry Placeholder="Raza del animal" x:Name="RazaAnimalEntry" />
+        <Entry Placeholder="ID del usuario dueño" x:Name="UsuarioIdEntry" Keyboard="Numeric" />
         <Button Text="Registrar Mascota" Clicked="OnRegistrarMascotaClicked" />
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

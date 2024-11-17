@@ -33,12 +33,32 @@ namespace VeterinaryApi.Controllers
             return mascota;
         }
 
-        [HttpPost]
-        public ActionResult<Mascota> CreateMascota(Mascota mascota)
+        [HttpPost("register")]
+        public ActionResult<Mascota> RegistrarMascota([FromBody] RegistrarMascotaDTO mascotaDTO)
         {
-            _context.mascotas.Add(mascota);
+            // Verificar si el usuario dueño existe
+            var usuario = _context.usuarios.FirstOrDefault(u => u.idusuarios == mascotaDTO.usuarios_dueno_idusuarios);
+            if (usuario == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            // Crear la nueva mascota
+            var nuevaMascota = new Mascota
+            {
+                nombre_mascota = mascotaDTO.nombre_mascota,
+                edad_mascota = mascotaDTO.edad_mascota,
+                fecha_nacimiento = mascotaDTO.fecha_nacimiento,
+                tipo_animal = mascotaDTO.tipo_animal,
+                raza_animal = mascotaDTO.raza_animal,
+                usuarios_dueno_idusuarios = mascotaDTO.usuarios_dueno_idusuarios
+            };
+
+            // Guardar en la base de datos
+            _context.mascotas.Add(nuevaMascota);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetMascota), new { id = mascota.idmascotas }, mascota);
+
+            return CreatedAtAction(nameof(GetMascota), new { id = nuevaMascota.idmascotas }, nuevaMascota);
         }
 
         [HttpPut("{id}")]

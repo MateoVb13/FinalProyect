@@ -1,6 +1,6 @@
 using System.Xml.Linq;
 using veterinaria.Models;
-using veterinaria.Pages;
+using veterinaria.Services;
 namespace veterinaria.Pages;
 
 public partial class Register : ContentPage
@@ -10,7 +10,7 @@ public partial class Register : ContentPage
     public Register()
 	{
 		InitializeComponent();
-        _apiService = new ApiService("https://7c42-2800-e2-c180-12c-608f-5211-ab50-42e7.ngrok-free.app");
+        _apiService = new ApiService("https://6bc0-2800-e2-c180-12c-608f-5211-ab50-42e7.ngrok-free.app");
 
     }
     private void GoToPage(ContentPage page)

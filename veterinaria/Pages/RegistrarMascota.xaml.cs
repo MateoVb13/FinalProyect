@@ -7,6 +7,7 @@ namespace veterinaria.Pages
     public partial class RegistrarMascota : ContentPage
     {
         private readonly ApiService _apiService;
+
         public RegistrarMascota()
         {
             InitializeComponent();
@@ -27,7 +28,6 @@ namespace veterinaria.Pages
 
                 // Validar los datos del formulario
                 if (string.IsNullOrEmpty(NombreMascotaEntry.Text) ||
-                    string.IsNullOrEmpty(EdadMascotaEntry.Text) ||
                     string.IsNullOrEmpty(TipoAnimalEntry.Text) ||
                     string.IsNullOrEmpty(RazaAnimalEntry.Text))
                 {
@@ -35,9 +35,14 @@ namespace veterinaria.Pages
                     return;
                 }
 
-                if (!int.TryParse(EdadMascotaEntry.Text, out int edadMascota))
+                // Calcular la edad de la mascota a partir de la fecha de nacimiento
+                DateTime fechaNacimiento = FechaNacimientoPicker.Date;
+                int edadMascota = CalcularEdad(fechaNacimiento);
+
+                // Validar que la fecha de nacimiento sea válida
+                if (edadMascota < 0)
                 {
-                    await DisplayAlert("Error", "La edad de la mascota debe ser un número válido.", "OK");
+                    await DisplayAlert("Error", "La fecha de nacimiento no puede ser en el futuro.", "OK");
                     return;
                 }
 
@@ -45,11 +50,11 @@ namespace veterinaria.Pages
                 var mascota = new RegistrarMascotaDTO
                 {
                     nombre_mascota = NombreMascotaEntry.Text,
-                    edad_mascota = edadMascota,
-                    fecha_nacimiento = FechaNacimientoPicker.Date,
+                    fecha_nacimiento = fechaNacimiento,
                     tipo_animal = TipoAnimalEntry.Text,
                     raza_animal = RazaAnimalEntry.Text,
-                    usuarios_dueno_idusuarios = int.Parse(userId) // Asignar el ID del usuario autenticado
+                    usuarios_dueno_idusuarios = int.Parse(userId),
+                    edad_mascota = edadMascota // Asignar la edad calculada
                 };
 
                 // Llamar al servicio para registrar la mascota
@@ -69,6 +74,25 @@ namespace veterinaria.Pages
             {
                 await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
             }
+        }
+
+        private int CalcularEdad(DateTime fechaNacimiento)
+        {
+            DateTime fechaActual = DateTime.Now;
+            int edad = fechaActual.Year - fechaNacimiento.Year;
+
+            // Ajustar si la fecha actual aún no ha pasado el día/mes de cumpleaños
+            if (fechaNacimiento > fechaActual.AddYears(-edad))
+            {
+                edad--;
+            }
+
+            return edad;
+        }
+
+        private async void OnCancelarClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync(); // Regresar a la pantalla anterior
         }
     }
 }

@@ -27,7 +27,8 @@
                                  HorizontalOptions="End" 
                                  VerticalOptions="Center"
                                  WidthRequest="40" HeightRequest="40" 
-                                 Source="editar_perfil.png"/>
+                                 Source="editar_perfil.png"
+                                 Clicked="GotoEditarPerfil"/>
                 </Grid>
             </StackLayout>
 

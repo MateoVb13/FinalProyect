@@ -54,12 +54,31 @@ namespace VeterinaryApi.Controllers
             return CreatedAtAction(nameof(GetUsuario), new { id = usuario.idusuarios }, usuario);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateUsuario(int id, Usuario usuario)
+        [HttpPut("Actualizar")]
+        public IActionResult UpdateCurrentUser([FromBody] Usuario usuarioActualizado)
         {
-            if (id != usuario.idusuarios)
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
             {
-                return BadRequest();
+                return Unauthorized("Usuario no autenticado.");
+            }
+
+            var usuario = _context.usuarios.FirstOrDefault(u => u.idusuarios == userId);
+            if (usuario == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            // Actualizar los datos del usuario
+            usuario.nombre_usuario = usuarioActualizado.nombre_usuario;
+            usuario.correo_ususario = usuarioActualizado.correo_ususario;
+            usuario.direccion_usuario = usuarioActualizado.direccion_usuario;
+            usuario.telefono_usuario = usuarioActualizado.telefono_usuario;
+
+            // Actualizar la contraseña solo si se proporcionó
+            if (!string.IsNullOrWhiteSpace(usuarioActualizado.contraseña_usuario))
+            {
+                usuario.contraseña_usuario = usuarioActualizado.contraseña_usuario;
             }
 
             _context.Entry(usuario).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
@@ -68,20 +87,6 @@ namespace VeterinaryApi.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteUsuario(int id)
-        {
-            var usuario = _context.usuarios.FirstOrDefault(u => u.idusuarios == id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            _context.usuarios.Remove(usuario);
-            _context.SaveChanges();
-
-            return NoContent();
-        }
 
 
         // Endpoint para registrar un nuevo usuario

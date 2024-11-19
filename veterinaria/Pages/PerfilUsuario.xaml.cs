@@ -65,5 +65,9 @@ namespace veterinaria.Pages
         {
             await DisplayAlert("Historial de Mascotas", "Funcionalidad pendiente de implementar.", "OK");
         }
+        private async void GotoEditarPerfil(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditarPerfil());
+        }
     }
 }

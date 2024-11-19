@@ -110,55 +110,63 @@ namespace VeterinaryApi.Controllers
         }
 
 
-
         [HttpPost("login")]
         public IActionResult Login([FromBody] UsuarioLoginDTO loginDTO)
         {
-            // Buscar el usuario con el correo y la contraseña proporcionados
             var usuario = _context.usuarios.FirstOrDefault(u => u.correo_ususario == loginDTO.Email && u.contraseña_usuario == loginDTO.Password);
             if (usuario == null)
             {
                 return Unauthorized("Credenciales incorrectas.");
             }
 
-            // Crear las claims que irán dentro del token
             var claims = new[]
             {
-        new Claim("id", usuario.idusuarios.ToString()), // ID del usuario
-        new Claim(ClaimTypes.Name, usuario.nombre_usuario), // Nombre del usuario
-        new Claim(ClaimTypes.Email, usuario.correo_ususario) // Correo electrónico
+        new Claim("id", usuario.idusuarios.ToString()),
+        new Claim(ClaimTypes.Name, usuario.nombre_usuario),
+        new Claim(ClaimTypes.Email, usuario.correo_ususario)
     };
 
-            // Configuración del token
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ClaveSuperSecreta12345678901234567890")); // Reemplaza con tu clave del appsettings.json
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ClaveSuperSecreta12345678901234567890"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: "VeterinaryApi", // Emisor del token
-                audience: "VeterinaryApiUsers", // Audiencia
+                issuer: "VeterinaryApi",
+                audience: "VeterinaryApiUsers",
                 claims: claims,
-                expires: DateTime.Now.AddHours(1), // Token válido por 1 hora
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: creds
             );
 
-            // Generar el token
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            // Agregar el token al objeto Usuario antes de devolverlo
-            var usuarioConToken = new
+            return Ok(new
             {
-                usuario.idusuarios,
-                usuario.nombre_usuario,
-                usuario.correo_ususario,
-                usuario.telefono_usuario,
-                usuario.direccion_usuario,
-                usuario.Roles_idroles,
                 Token = tokenString,
-                Expiration = token.ValidTo
-            };
+                usuario.nombre_usuario,
+                usuario.correo_ususario
+            });
+        }
 
-            // Devolver el usuario con el token
-            return Ok(usuarioConToken);
+        [HttpGet("me")]
+        public IActionResult GetCurrentUser()
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Unauthorized("Usuario no autenticado.");
+            }
+
+            var usuario = _context.usuarios.FirstOrDefault(u => u.idusuarios == userId);
+            if (usuario == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            return Ok(new
+            {
+                usuario.nombre_usuario,
+                usuario.correo_ususario
+            });
         }
 
 

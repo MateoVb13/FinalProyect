@@ -11,7 +11,7 @@ namespace veterinaria.Pages
         public RegistrarMascota()
         {
             InitializeComponent();
-            _apiService = new ApiService("https://0081-2800-e2-c180-12c-608f-5211-ab50-42e7.ngrok-free.app");
+            _apiService = new ApiService("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app");
         }
 
         private async void OnRegistrarMascotaClicked(object sender, EventArgs e)

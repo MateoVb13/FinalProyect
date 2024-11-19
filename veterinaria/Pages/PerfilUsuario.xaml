@@ -11,13 +11,13 @@
             <!-- Header Section -->
             <StackLayout BackgroundColor="#3b4fb2" Padding="20,20,20,20" Grid.Row="0">
                 <Grid>
-                    <Label Text="Nombre del cliente" 
+                    <Label x:Name="NombreUsuarioLabel" 
                            FontSize="24" 
                            FontAttributes="Bold"
                            TextColor="White" 
                            HorizontalOptions="Start" 
                            VerticalOptions="Center" Margin="0,0,0,20"/>
-                    <Label Text="juan.perez@gmail.com" 
+                    <Label x:Name="CorreoUsuarioLabel" 
                            FontSize="14" 
                            TextColor="White" 
                            HorizontalOptions="Start" 

@@ -7,27 +7,27 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20" Spacing="15">
-                <!-- Campo Nombre -->
+                
                 <Label Text="Nombre" FontSize="14" />
                 <Entry x:Name="NombreEntry" Placeholder="Nombre" FontSize="16" />
 
-                <!-- Campo Correo -->
+                
                 <Label Text="Correo" FontSize="14" />
                 <Entry x:Name="CorreoEntry" Placeholder="Correo" FontSize="16" />
 
-                <!-- Campo Dirección -->
+                
                 <Label Text="Dirección" FontSize="14" />
                 <Entry x:Name="DireccionEntry" Placeholder="Dirección" FontSize="16" />
 
-                <!-- Campo Teléfono -->
+                
                 <Label Text="Teléfono" FontSize="14" />
                 <Entry x:Name="TelefonoEntry" Placeholder="Teléfono" FontSize="16" Keyboard="Telephone" />
 
-                <!-- Campo Contraseña -->
+                
                 <Label Text="Contraseña" FontSize="14" />
                 <Entry x:Name="ContrasenaEntry" Placeholder="Contraseña" FontSize="16" IsPassword="True" />
 
-                <!-- Botones -->
+                
                 <Button Text="Guardar" Clicked="OnGuardarClicked" BackgroundColor="#3b4fb2" TextColor="White" />
                 <Button Text="Cancelar" Clicked="OnCancelarClicked" BackgroundColor="Transparent" TextColor="Red" />
             </StackLayout>

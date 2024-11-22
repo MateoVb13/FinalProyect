@@ -6,18 +6,18 @@
 
     <ContentPage.Content>
         <Grid>
-            <!-- Imagen de Fondo -->
+            
             <Image Source="fondo_registrarmascotas.png"
                    Aspect="AspectFill"
                    Opacity="2"  
                    HorizontalOptions="Fill"
                    VerticalOptions="Fill" />
 
-            <!-- Contenido Principal -->
+            
             <ScrollView>
                 <VerticalStackLayout Padding="20" Spacing="10">
 
-                    <!-- Icono y Título -->
+                    
                     <Image Source="mas_mascotas.png" 
                            WidthRequest="100" 
                            HeightRequest="100" 
@@ -32,11 +32,11 @@
                            TextColor="WhiteSmoke" 
                            HorizontalOptions="Center" Margin="0,0,0,3" />
 
-                    <!-- Formulario -->
+                    
 
                     <VerticalStackLayout Spacing="10">
 
-                        <!-- Campo de Nombre -->
+                        
                         <Label Text="Nombre" Margin="5,0"/>
                         <Entry x:Name="NombreMascotaEntry"
                                Placeholder="Nombre"
@@ -44,7 +44,7 @@
                                PlaceholderColor="DarkSlateGrey" 
                                TextColor="Black" Margin="0,-10,0,0"/>
 
-                        <!-- Campo de Fecha de Nacimiento -->
+                        
                         <Label Text="Fecha de nacimiento" Margin="5,0"/>
                         <DatePicker x:Name="FechaNacimientoPicker"
                                     Format="dd/MM/yyyy"
@@ -54,7 +54,7 @@
                                     BackgroundColor="Transparent"
                                     Margin="0,-10,0,0"/>
 
-                        <!-- Campo de Tipo -->
+                        
                         <Label Text="Tipo" Margin="5,0"/>
                         <Entry x:Name="TipoAnimalEntry"
                                Placeholder="Ej: perro, conejo..." 
@@ -63,7 +63,7 @@
                                TextColor="Black"
                                Margin="0,-10,0,0"/>
 
-                        <!-- Campo de Raza -->
+                        
                         <Label Text="Raza" Margin="5,0"/>
                         <Entry x:Name="RazaAnimalEntry"
                                Placeholder="Ej: Bóxer, Pitbull..." 
@@ -73,7 +73,7 @@
                                Margin="0,-10,0,0"/>
                     </VerticalStackLayout>
 
-                    <!-- Botones -->
+                    
                     <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
                         <Button Text="Agregar" 
                                 BackgroundColor="#3b4fb2" 

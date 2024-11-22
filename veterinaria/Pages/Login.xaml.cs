@@ -10,7 +10,7 @@ public partial class Login : ContentPage
     public Login()
     {
         InitializeComponent();
-        _apiService = new ApiService("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app");
+        _apiService = new ApiService("https://localhost:7122");
     }
 
     private void GoToPage(ContentPage page)
@@ -27,26 +27,26 @@ public partial class Login : ContentPage
     {
         try
         {
-            // Validar que los campos de entrada no estén vacíos
+            
             if (string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text))
             {
                 await DisplayAlert("Error", "Por favor, ingresa tu correo y contraseña.", "OK");
                 return;
             }
 
-            // Crear el DTO para el inicio de sesión
+            
             var loginDTO = new UsuarioLoginDTO
             {
                 Email = emailEntry.Text,
                 Password = passwordEntry.Text
             };
 
-            // Llamar al servicio de inicio de sesión
+            
             var usuario = await _apiService.LoginAsync(loginDTO);
 
             if (usuario != null)
             {
-                // Almacenar el token JWT en SecureStorage para futuras solicitudes
+                
                 if (!string.IsNullOrEmpty(usuario.Token))
                 {
                     await SecureStorage.SetAsync("jwt_token", usuario.Token);
@@ -58,24 +58,24 @@ public partial class Login : ContentPage
                     return;
                 }
 
-                // Opcional: Guardar el ID del usuario en SecureStorage
+                
                 await SecureStorage.SetAsync("userId", usuario.idusuarios.ToString());
 
-                // Mostrar mensaje de bienvenida
+                
                 await DisplayAlert("Éxito", $"Bienvenido {usuario.nombre_usuario}", "OK");
 
-                // Navegar a la página principal de la aplicación
+                
                 Application.Current.MainPage = new MainPage();
             }
             else
             {
-                // Mostrar mensaje de error si las credenciales son incorrectas
+                
                 await DisplayAlert("Error", "Credenciales incorrectas o problema con el servidor.", "OK");
             }
         }
         catch (Exception ex)
         {
-            // Manejar cualquier excepción inesperada
+            
             Console.WriteLine($"Error durante el inicio de sesión: {ex.Message}");
             if (ex.InnerException != null)
             {

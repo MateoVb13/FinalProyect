@@ -48,7 +48,7 @@ namespace veterinaria.Pages
                 var jsonData = JsonConvert.SerializeObject(datosActualizados);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app/api/Usuarios/Actualizar", content);
+                var response = await client.PutAsync("https://localhost:7122/api/Usuarios/Actualizar", content);
                 if (response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Éxito", "Datos actualizados correctamente.", "OK");
@@ -64,7 +64,7 @@ namespace veterinaria.Pages
 
         private async void OnCancelarClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync(); // Regresa a la página anterior
+            await Navigation.PopAsync(); 
         }
     }
 }

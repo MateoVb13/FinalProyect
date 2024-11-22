@@ -6,14 +6,14 @@
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
 
-            <!-- Encabezado -->
+            
             <Label Text="Agendar Nueva Cita"
                    FontSize="Large"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
                    TextColor="#004d40" />
 
-            <!-- Selección de tipo de cita -->
+            
             <Frame CornerRadius="10" BackgroundColor="#e0f7fa" Padding="10">
                 <StackLayout>
                     <Label Text="Tipo de Cita"
@@ -34,7 +34,7 @@
                 </StackLayout>
             </Frame>
 
-            <!-- Selección de fecha y hora -->
+            
             <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10">
                 <StackLayout>
                     <Label Text="Fecha de la Cita"
@@ -52,7 +52,7 @@
                 </StackLayout>
             </Frame>
 
-            <!-- Botón de Confirmación -->
+            
             <Button Text="Confirmar Cita"
                     FontSize="Medium"
                     TextColor="White"

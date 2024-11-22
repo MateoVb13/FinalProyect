@@ -41,7 +41,7 @@
                        Margin="0,0,0,10"/>
 
 
-                <!--GestureRecognizers="{Binding TapGestureCommand}" />-->
+                
 
                 <Button Text="Sign In"
                         Clicked="OnLoginClicked"
@@ -64,7 +64,7 @@
                     FontAttributes="Bold"
                     Margin="5,0,0,0"/>
 
-                    <!--GestureRecognizers="{Binding SignUpCommand}" />-->
+                    
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>

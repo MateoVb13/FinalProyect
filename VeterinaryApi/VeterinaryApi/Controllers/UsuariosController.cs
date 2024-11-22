@@ -8,11 +8,6 @@ using System.Security.Claims;
 using System.Text;
 
 
-
-
-
-
-
 namespace VeterinaryApi.Controllers
 {
     [ApiController]
@@ -126,9 +121,9 @@ namespace VeterinaryApi.Controllers
 
             var claims = new[]
             {
-        new Claim("id", usuario.idusuarios.ToString()),
-        new Claim(ClaimTypes.Name, usuario.nombre_usuario),
-        new Claim(ClaimTypes.Email, usuario.correo_ususario)
+                new Claim("id", usuario.idusuarios.ToString()),
+                new Claim(ClaimTypes.Name, usuario.nombre_usuario),
+                new Claim(ClaimTypes.Email, usuario.correo_ususario)
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ClaveSuperSecreta12345678901234567890"));

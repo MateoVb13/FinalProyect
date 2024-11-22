@@ -10,7 +10,7 @@ public partial class Register : ContentPage
     public Register()
 	{
 		InitializeComponent();
-        _apiService = new ApiService("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app");
+        _apiService = new ApiService("https://localhost:7122");
 
     }
     private void GoToPage(ContentPage page)
@@ -29,14 +29,14 @@ public partial class Register : ContentPage
                 telefono_usuario = telefonoEntry.Text,
                 direccion_usuario = direccionEntry.Text,
                 contraseña_usuario = passwordEntry.Text,
-                Roles_idroles = 2  // Puedes definir un rol por defecto, como cliente
+                Roles_idroles = 2  
             };
 
             bool isRegistered = await _apiService.RegisterAsync(usuario);
             if (isRegistered)
             {
                 await DisplayAlert("Éxito", "Usuario registrado exitosamente", "OK");
-                // Navegar a la página de login
+                
                 await Navigation.PushAsync(new Login());
             }
             else

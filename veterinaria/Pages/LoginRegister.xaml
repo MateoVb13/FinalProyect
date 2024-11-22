@@ -5,15 +5,15 @@
              BackgroundColor="Black">
     <ScrollView>
         <Grid>
-            <!-- Imagen de fondo -->
+            
             <Image Source="perrofondo.jpg" 
                    Aspect="AspectFill" 
                    Opacity="0.6"/>
 
-            <!-- Contenido principal -->
+            
             <Grid RowDefinitions="*,4*,*">
                 <StackLayout Grid.Row="0">
-                    <!-- Título y descripción -->
+                    
                     <Label Text="Veterinaria"
                         FontSize="25"
                         TextColor="White"
@@ -39,7 +39,7 @@
 
                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20" Spacing="15" Grid.Row="2">
 
-                    <!-- Botones -->
+                    
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
                         <Button Text="Sign Up" 
                             Clicked="Gotoregister"
@@ -58,7 +58,7 @@
                             WidthRequest="120" />
                     </StackLayout>
 
-                    <!-- Términos y condiciones -->
+                    
                     <Label Text="By joining you agree to our Terms of Service and Privacy Policy"
                        FontSize="10"
                        TextColor="White"

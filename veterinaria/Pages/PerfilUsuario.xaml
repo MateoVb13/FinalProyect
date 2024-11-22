@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="Auto, Auto, *" Padding="0">
 
-            <!-- Header Section -->
+            
             <StackLayout BackgroundColor="#3b4fb2" Padding="20,20,20,20" Grid.Row="0">
                 <Grid>
                     <Label x:Name="NombreUsuarioLabel" 
@@ -32,7 +32,7 @@
                 </Grid>
             </StackLayout>
 
-            <!-- Horizontal Button List Section -->
+            
             <StackLayout Orientation="Horizontal" 
                          BackgroundColor="White" 
                          Padding="10,10" 
@@ -41,7 +41,7 @@
                          Margin="0,0,0,0">
                 <ScrollView Orientation="Horizontal">
                     <HorizontalStackLayout Spacing="10">
-                        <!-- Frame para navegar a la página de registro de mascota -->
+                        
                         <Frame BackgroundColor="#f5f7ff" BorderColor="#d3d3d3" CornerRadius="10" WidthRequest="85" HeightRequest="85" HasShadow="False">
                             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
                                 <Image Source="pets_settings.png" WidthRequest="45" HeightRequest="45" />
@@ -51,7 +51,7 @@
                             </Frame.GestureRecognizers>
                         </Frame>
 
-                        <!-- Placeholder Frames para los otros botones -->
+                        
                         <Frame BackgroundColor="#f5f7ff" BorderColor="#d3d3d3" CornerRadius="10" WidthRequest="85" HeightRequest="85" HasShadow="False">
                             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
                                 <Image Source="agendar_citas.png" WidthRequest="50" HeightRequest="50" />
@@ -82,7 +82,7 @@
                 </ScrollView>
             </StackLayout>
 
-            <!-- Appointment List Section -->
+            
             <StackLayout Padding="10" Grid.Row="2">
                 <Label Text="Citas Pendientes" FontSize="15" TextColor="#3b4fb2" HorizontalTextAlignment="Center" />
                 <CollectionView>

@@ -43,17 +43,17 @@ namespace veterinaria.Services
 
             var response = await _httpClient.PostAsync(url, content);
 
-            // Captura el código de estado y el contenido de la respuesta para depuración
+       
             var responseContent = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"Código de estado: {response.StatusCode}");
             Console.WriteLine($"Contenido de la respuesta: {responseContent}");
 
-            // Maneja el caso cuando el código de estado es exitoso (200, 201)
+            
             if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Created)
             {
                 try
                 {
-                    // Intenta deserializar la respuesta si no es string
+                    
                     if (typeof(TResponse) == typeof(string))
                     {
                         return (TResponse)(object)responseContent;
@@ -63,12 +63,12 @@ namespace veterinaria.Services
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error al deserializar la respuesta: {ex.Message}");
-                    // Si falla la deserialización, devuelve la respuesta como string si es necesario
+                    
                     if (typeof(TResponse) == typeof(string))
                     {
                         return (TResponse)(object)responseContent;
                     }
-                    throw;  // Vuelve a lanzar la excepción si no es posible manejarla
+                    throw; 
                 }
             }
             else
@@ -114,7 +114,7 @@ namespace veterinaria.Services
             }
         }
 
-        // Método para registrar un usuario
+        
         public async Task<bool> RegisterAsync(Usuario usuario)
         {
             try
@@ -126,7 +126,7 @@ namespace veterinaria.Services
 
                 var response = await _httpClient.PostAsync(url, content);
 
-                // Verificar si la respuesta es exitosa (código de estado 200 o 201)
+                
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Registro exitoso.");
@@ -134,7 +134,7 @@ namespace veterinaria.Services
                 }
                 else
                 {
-                    // Capturar y mostrar el error recibido de la API
+                    
                     var errorContent = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error al registrar el usuario: {response.ReasonPhrase}, Contenido del error: {errorContent}");
                     return false;
@@ -142,7 +142,7 @@ namespace veterinaria.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción que ocurra durante la petición HTTP
+                
                 Console.WriteLine($"Error al registrar el usuario: {ex.Message}");
                 if (ex.InnerException != null)
                 {
@@ -192,7 +192,7 @@ namespace veterinaria.Services
 
             try
             {
-                // Obtener el token desde SecureStorage
+                
                 var token = await SecureStorage.GetAsync("jwt_token");
                 if (string.IsNullOrWhiteSpace(token))
                 {
@@ -203,7 +203,7 @@ namespace veterinaria.Services
                 var jsonData = JsonConvert.SerializeObject(mascota);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                // Agregar el encabezado de autorización
+                
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                 var response = await _httpClient.PostAsync(url, content);

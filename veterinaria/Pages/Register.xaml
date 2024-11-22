@@ -8,7 +8,7 @@
 
     <VerticalStackLayout Padding="20" Spacing="15" Margin="0,30,0,0">
 
-        <!-- Header -->
+        
         <Label Text="Welcome" 
             FontSize="32"
             FontAttributes="Bold"
@@ -20,7 +20,7 @@
             HorizontalOptions="Center"
             Margin="0,0,0,30"/>
 
-        <!-- Form Fields -->
+        
         <Entry x:Name = "nombreEntry" Placeholder="Name"  TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
         <Entry x:Name = "telefonoEntry" Placeholder="Phone" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
         <Entry x:Name = "direccionEntry" Placeholder="Home Adress" TextColor="Black" FontSize="16" Margin="0,0,0,10"/>
@@ -28,7 +28,7 @@
         <Entry x:Name = "passwordEntry" Placeholder="Password" IsPassword="True" TextColor="Black" FontSize="16" Margin="0,0,0,30"/>
 
 
-        <!-- Terms and Conditions -->
+        
         <HorizontalStackLayout Spacing="5">
             <CheckBox Color="Green" IsChecked="True"/>
             <Label Text="I agree to the"
@@ -41,7 +41,7 @@
                 TextColor="Blue"/>
         </HorizontalStackLayout>
 
-        <!-- Sign Up Button -->
+        
         <Button Text="Sign Up"
              Clicked="OnRegisterClicked"
              BackgroundColor="Blue"
@@ -49,7 +49,7 @@
              CornerRadius="5"
              FontSize="16"/>
 
-        <!-- Sign In Link -->
+        
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
             <Button Text="Sign In" 
             Clicked="Gotologin"

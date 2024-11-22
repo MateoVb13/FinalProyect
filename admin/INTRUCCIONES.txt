@@ -1,0 +1,5 @@
+1. esta carpeta tienes que ponerla en htdocs en donde tengas instalado xampp
+2. verifica que la conexion con la bd este bien (verifica tus credenciales y lo que sea necesario)
+
+LOGIN SOLO FUNCIONA CON REGISTROS CON ROL "Administrador"
+si no hay ese rol, agregarlo a la bd 

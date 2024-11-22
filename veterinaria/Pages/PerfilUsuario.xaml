@@ -57,7 +57,7 @@
                                 <Image Source="agendar_citas.png" WidthRequest="50" HeightRequest="50" />
                             </VerticalStackLayout>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnAgendarCitasTapped" />
+                                <TapGestureRecognizer Tapped="GotoAgendarCita" />
                             </Frame.GestureRecognizers>
                         </Frame>
 

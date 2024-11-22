@@ -25,7 +25,11 @@ namespace veterinaria.Pages
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+<<<<<<< HEAD
                 var response = await client.GetAsync("https://localhost:7122/api/Usuarios/me"); 
+=======
+                var response = await client.GetAsync("https://0d75-2800-e2-c180-12c-c80a-9149-df28-ef48.ngrok-free.app/api/Usuarios/me");
+>>>>>>> dc8d39abb04c5befaf53ec02e3d7c4a7320bf13b
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -48,10 +52,15 @@ namespace veterinaria.Pages
             await Navigation.PushAsync(new RegistrarMascota());
         }
 
+<<<<<<< HEAD
        
         private async void OnAgendarCitasTapped(object sender, EventArgs e)
+=======
+        // Placeholder para Agendar Citas
+        private async void GotoAgendarCita(object sender, EventArgs e)
+>>>>>>> dc8d39abb04c5befaf53ec02e3d7c4a7320bf13b
         {
-            await DisplayAlert("Agendar Citas", "Funcionalidad pendiente de implementar.", "OK");
+            await Navigation.PushAsync(new AgendarCita());
         }
 
         

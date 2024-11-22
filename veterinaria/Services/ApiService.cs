@@ -231,6 +231,42 @@ namespace veterinaria.Services
             }
         }
 
+        public async Task<Usuario> GetCurrentUserAsync()
+        {
+            var endpoint = "api/Usuarios/me";
+
+            try
+            {
+                var token = await SecureStorage.GetAsync("jwt_token");
+                if (string.IsNullOrEmpty(token))
+                {
+                    throw new Exception("El token de autenticación no está disponible.");
+                }
+
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<Usuario>(content);
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Error al obtener usuario actual: {response.StatusCode}, Detalles: {errorContent}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en GetCurrentUserAsync: {ex.Message}");
+                throw;
+            }
+        }
+
+
 
 
 

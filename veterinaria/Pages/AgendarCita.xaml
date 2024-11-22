@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="veterinaria.Pages.AgendarCita"
              Title="Agendar Cita">
-    <ScrollView>
-        <StackLayout Padding="20" Spacing="20">
 
+<<<<<<< HEAD
             
             <Label Text="Agendar Nueva Cita"
                    FontSize="Large"
@@ -42,16 +41,26 @@
                            FontAttributes="Bold"
                            TextColor="#bf360c" />
                     <DatePicker />
+=======
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Seleccionar Mascota -->
+            <Label Text="Seleccione Mascota" />
+            <Picker x:Name="MascotaPicker" />
 
-                    <Label Text="Hora de la Cita"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           Margin="0,10,0,0"
-                           TextColor="#bf360c" />
-                    <TimePicker />
-                </StackLayout>
-            </Frame>
+            <!-- Seleccionar Tipo de Servicio -->
+            <Label Text="Seleccione Tipo de Servicio" />
+            <Picker x:Name="TipoServicioPicker" />
 
+            <!-- Seleccionar Fecha y Hora -->
+            <Label Text="Seleccione Fecha" />
+            <DatePicker x:Name="FechaPicker" />
+>>>>>>> dc8d39abb04c5befaf53ec02e3d7c4a7320bf13b
+
+            <Label Text="Seleccione Hora de Inicio" />
+            <TimePicker x:Name="HoraInicioPicker" />
+
+<<<<<<< HEAD
             
             <Button Text="Confirmar Cita"
                     FontSize="Medium"
@@ -60,7 +69,14 @@
                     CornerRadius="10"
                     WidthRequest="200"
                     HorizontalOptions="Center" />
+=======
+            <Label Text="Seleccione Hora de Fin" />
+            <TimePicker x:Name="HoraFinPicker" />
+>>>>>>> dc8d39abb04c5befaf53ec02e3d7c4a7320bf13b
 
+
+            <!-- Botón Guardar -->
+            <Button Text="Agendar Cita" Clicked="OnGuardarCitaClicked" BackgroundColor="#3b4fb2" TextColor="White" />
         </StackLayout>
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

@@ -48,7 +48,11 @@ namespace veterinaria.Pages
                 var jsonData = JsonConvert.SerializeObject(datosActualizados);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
+<<<<<<< HEAD
                 var response = await client.PutAsync("https://localhost:7122/api/Usuarios/Actualizar", content);
+=======
+                var response = await client.PutAsync("https://0d75-2800-e2-c180-12c-c80a-9149-df28-ef48.ngrok-free.app/Usuarios/Actualizar", content);
+>>>>>>> dc8d39abb04c5befaf53ec02e3d7c4a7320bf13b
                 if (response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Éxito", "Datos actualizados correctamente.", "OK");

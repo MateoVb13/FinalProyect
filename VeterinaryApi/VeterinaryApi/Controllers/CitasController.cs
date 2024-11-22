@@ -22,24 +22,51 @@ namespace VeterinaryApi.Controllers
             return _context.atenciones_y_servicios.ToList();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<AtencionServicio> GetCita(int id)
+        [HttpGet("mis-citas")]
+        public IActionResult GetCitasUsuario()
         {
-            var cita = _context.atenciones_y_servicios.FirstOrDefault(c => c.idcitas == id);
-            if (cita == null)
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
             {
-                return NotFound();
+                return Unauthorized("Usuario no autenticado.");
             }
-            return cita;
+
+            var citas = _context.atenciones_y_servicios.Where(c => c.mascotas_idmascotas == userId).ToList();
+            return Ok(citas);
         }
 
+
         [HttpPost]
-        public ActionResult<AtencionServicio> CreateCita(AtencionServicio cita)
+        public IActionResult AgendarCita([FromBody] AtencionServicio cita)
         {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Unauthorized("Usuario no autenticado.");
+            }
+
+            // Validar conflictos de horario
+            var conflicto = _context.atenciones_y_servicios.Any(c =>
+                c.fecha_apartada == cita.fecha_apartada &&
+                c.hora_inicio < cita.hora_final &&
+                c.hora_final > cita.hora_inicio);
+
+            if (conflicto)
+            {
+                return BadRequest("El horario está en conflicto con otra cita.");
+            }
+
+            // Asignar automáticamente el estado como 'Pendiente'
+            cita.estados_cita_idestados_cita = 1;
+
+            // Registrar la cita
             _context.atenciones_y_servicios.Add(cita);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetCita), new { id = cita.idcitas }, cita);
+
+            return CreatedAtAction(nameof(GetCitas), new { id = cita.idcitas }, cita);
         }
+
+
 
         [HttpPut("{id}")]
         public IActionResult UpdateCita(int id, AtencionServicio cita)

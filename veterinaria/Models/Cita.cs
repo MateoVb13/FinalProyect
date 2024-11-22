@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace veterinaria.Models
 {
-    public class Cita
+    public class AtencionServicio
     {
         [JsonPropertyName("idcitas")]
         public int Idcitas { get; set; }

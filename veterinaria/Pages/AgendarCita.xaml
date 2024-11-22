@@ -3,64 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="veterinaria.Pages.AgendarCita"
              Title="Agendar Cita">
-    <ScrollView>
-        <StackLayout Padding="20" Spacing="20">
 
-            <!-- Encabezado -->
-            <Label Text="Agendar Nueva Cita"
-                   FontSize="Large"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   TextColor="#004d40" />
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Seleccionar Mascota -->
+            <Label Text="Seleccione Mascota" />
+            <Picker x:Name="MascotaPicker" />
 
-            <!-- Selección de tipo de cita -->
-            <Frame CornerRadius="10" BackgroundColor="#e0f7fa" Padding="10">
-                <StackLayout>
-                    <Label Text="Tipo de Cita"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           TextColor="#00796b" />
-                    <Picker Title="Seleccione el tipo de cita"
-                            FontSize="Small"
-                            TitleColor="#004d40">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Consulta General</x:String>
-                                <x:String>Vacunación</x:String>
-                                <x:String>Urgencia</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </StackLayout>
-            </Frame>
+            <!-- Seleccionar Tipo de Servicio -->
+            <Label Text="Seleccione Tipo de Servicio" />
+            <Picker x:Name="TipoServicioPicker" />
 
-            <!-- Selección de fecha y hora -->
-            <Frame CornerRadius="10" BackgroundColor="#ffe0b2" Padding="10">
-                <StackLayout>
-                    <Label Text="Fecha de la Cita"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           TextColor="#bf360c" />
-                    <DatePicker />
+            <!-- Seleccionar Fecha y Hora -->
+            <Label Text="Seleccione Fecha" />
+            <DatePicker x:Name="FechaPicker" />
 
-                    <Label Text="Hora de la Cita"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           Margin="0,10,0,0"
-                           TextColor="#bf360c" />
-                    <TimePicker />
-                </StackLayout>
-            </Frame>
+            <Label Text="Seleccione Hora de Inicio" />
+            <TimePicker x:Name="HoraInicioPicker" />
 
-            <!-- Botón de Confirmación -->
-            <Button Text="Confirmar Cita"
-                    FontSize="Medium"
-                    TextColor="White"
-                    BackgroundColor="#00796b"
-                    CornerRadius="10"
-                    WidthRequest="200"
-                    HorizontalOptions="Center" />
+            <Label Text="Seleccione Hora de Fin" />
+            <TimePicker x:Name="HoraFinPicker" />
 
+
+            <!-- Botón Guardar -->
+            <Button Text="Agendar Cita" Clicked="OnGuardarCitaClicked" BackgroundColor="#3b4fb2" TextColor="White" />
         </StackLayout>
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

@@ -96,6 +96,40 @@ namespace VeterinaryApi.Controllers
             return NoContent();
         }
 
+        [HttpGet("mis-mascotas")]
+        public IActionResult GetMascotasUsuario([FromQuery] int? userId = null)
+        {
+            // Verificar si el usuario autenticado está disponible o se usa el parámetro de prueba
+            int userIdToUse;
+            if (userId.HasValue)
+            {
+                userIdToUse = userId.Value; // Usar el parámetro opcional para pruebas
+            }
+            else
+            {
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out userIdToUse))
+                {
+                    return Unauthorized("Usuario no autenticado.");
+                }
+            }
+
+            // Cargar las mascotas asociadas al usuario
+            var mascotas = _context.mascotas
+                .Where(m => m.usuarios_dueno_idusuarios == userIdToUse)
+                .ToList();
+
+            if (!mascotas.Any())
+            {
+                return NotFound("No se encontraron mascotas para este usuario.");
+            }
+
+            return Ok(mascotas);
+        }
+
+
+
+
         [HttpDelete("{id}")]
         public IActionResult DeleteMascota(int id)
         {
@@ -110,5 +144,6 @@ namespace VeterinaryApi.Controllers
 
             return NoContent();
         }
+
     }
 }

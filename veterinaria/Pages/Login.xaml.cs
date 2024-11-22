@@ -10,7 +10,7 @@ public partial class Login : ContentPage
     public Login()
     {
         InitializeComponent();
-        _apiService = new ApiService("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app");
+        _apiService = new ApiService("https://0d75-2800-e2-c180-12c-c80a-9149-df28-ef48.ngrok-free.app");
     }
 
     private void GoToPage(ContentPage page)

@@ -25,7 +25,7 @@ namespace veterinaria.Pages
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                var response = await client.GetAsync("https://379a-2800-e2-c180-12c-55b5-839a-1ecd-16f9.ngrok-free.app/api/Usuarios/me"); // Reemplaza con tu URL
+                var response = await client.GetAsync("https://0d75-2800-e2-c180-12c-c80a-9149-df28-ef48.ngrok-free.app/api/Usuarios/me");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -49,9 +49,9 @@ namespace veterinaria.Pages
         }
 
         // Placeholder para Agendar Citas
-        private async void OnAgendarCitasTapped(object sender, EventArgs e)
+        private async void GotoAgendarCita(object sender, EventArgs e)
         {
-            await DisplayAlert("Agendar Citas", "Funcionalidad pendiente de implementar.", "OK");
+            await Navigation.PushAsync(new AgendarCita());
         }
 
         // Placeholder para Estilo de Servicios
